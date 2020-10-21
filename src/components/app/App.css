@@ -1,0 +1,11 @@
+.App {
+  width: 100%;
+  display:inline-block;
+}
+
+ .app__background {
+  background-image: url(../../images/header.jpg);
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed; /* !!! */
+ }
