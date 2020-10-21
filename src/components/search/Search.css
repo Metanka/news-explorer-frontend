@@ -1,0 +1,61 @@
+.search {
+  display: flex;
+  width: 608px;
+  margin: 80px auto;
+  flex-direction: column;
+}
+
+.search__title {
+  width: 608px;
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 60px;
+  line-height: 64px;
+  color: white;
+  margin: 0;
+}
+
+.search__about {
+  width: 545px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: white;
+  margin: 32px 0 64px 0;
+}
+
+.search__form {
+  display: flex;
+  flex-direction: row;
+  border-radius: 50px;
+  position: relative;
+}
+
+.search__input {
+  height: 64px;
+  width: 80%;
+  margin: 0;
+  border: none;
+  border-radius: 50px;
+  margin-bottom: 80px;
+}
+
+.search__button {
+  width: 168px;
+  height: 66px;
+  background-color: #2f71e5;
+  border: none;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 80px;
+  right: 0px;
+  color: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}

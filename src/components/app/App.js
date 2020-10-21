@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Header from '../header/Header';
+import Search from '../search/Search';
+import About from '../about/About';
 
 const App = () => {
 
@@ -8,7 +10,9 @@ const App = () => {
     <div className="App">
       <div className='app__background'>
         <Header />
+        <Search />
       </div>
+      <About />
     </div>
   );
 }
