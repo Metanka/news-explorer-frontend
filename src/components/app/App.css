@@ -1,6 +1,6 @@
 .App {
   width: 100%;
-  display:inline-block;
+  display: inline-block;
 }
 
  .app__background {
@@ -8,5 +8,5 @@
   background-size: 100%;
   background-repeat: space;
   background-position: center;
-  background-attachment: fixed; /* !!! */
+  background-attachment: fixed; 
  }

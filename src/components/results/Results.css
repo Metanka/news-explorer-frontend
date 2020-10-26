@@ -1,0 +1,36 @@
+.results {
+  background-color: #F5F6F7;
+  padding: 80px 104px;
+  display: flex;
+  flex-direction: column;
+}
+
+.results__title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+.results__add {
+  width: 288px;
+  height: 64px;
+  background-color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  align-self: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 64px 0;
+}

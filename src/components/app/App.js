@@ -3,6 +3,8 @@ import './App.css';
 import Header from '../header/Header';
 import Search from '../search/Search';
 import About from '../about/About';
+import Footer from '../footer/Footer';
+import Results from '../results/Results';
 
 const App = () => {
 
@@ -12,7 +14,9 @@ const App = () => {
         <Header />
         <Search />
       </div>
+      <Results />
       <About />
+      <Footer />
     </div>
   );
 }

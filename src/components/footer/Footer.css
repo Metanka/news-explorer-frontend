@@ -1,0 +1,48 @@
+.footer {
+  max-width: 1232px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px auto 26px auto;
+}
+
+.footer__censure {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #b6bcbf;
+}
+
+.footer__box {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer__menu {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.footer__link {
+  display: inline-block;
+  color: #1a1b22;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  margin-left: 25px;
+}
+
+.footer__social {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer__item:first-of-type {
+  margin-right: 24px;
+}
