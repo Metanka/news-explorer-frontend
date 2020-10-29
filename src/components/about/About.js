@@ -6,7 +6,9 @@ const About = () => {
 
   return (
     <div className='about'>
-      <img className='about__photo' src = {photo}  alt='Профиль автора' />
+      <div className='about__photo-box'>
+        <img className='about__photo' src={photo} alt='Профиль автора' />
+      </div>
       <div className='about__box'>
         <h2 className='about__title'>Об авторе</h2>
         <p className='about__info'>Неподражаемая наипрекраснейшая и очень скромная я.</p>

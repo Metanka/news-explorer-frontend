@@ -6,15 +6,17 @@ const Results = () => {
 
   return (
     <div className='results'>
-      <h2 className='results__title'>
-        Результаты поиска
+      <div className='results__box'>
+        <h2 className='results__title'>
+          Результаты поиска
       </h2>
-      <div className='cards'>
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
+        <div className='cards'>
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
+        </div>
+        <button className='results__add'>Показать еще</button>
       </div>
-      <button className='results__add'>Показать еще</button>
     </div>
   );
 }

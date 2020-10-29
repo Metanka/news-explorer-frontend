@@ -41,7 +41,8 @@
   font-size: 18px;
   line-height: 24px;
   margin: 0;
-  margin-left: 32px;
+  margin-right: 32px;
+  text-decoration: none;
 }
 
 .header__link_active {
@@ -60,5 +61,106 @@
 
 .header__link:last-of-type {
   margin: 0;
+}
+
+.header__button-group {
+  display: none;
+}
+
+@media screen and (max-width: 1410px) {
+  .header__container {
+    max-width: calc(768px - 80px);
+  }
+  .header__link {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .header__link_active {
+    padding: 17px 0;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .header__container {
+    max-width: 550px;
+  }
+  .header__link {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .header__link_active {
+    padding: 17px 0;
+  }
+}
+
+@media screen and (max-width: 606px) {
+  .header__box {
+    display: none;
+  }
+  .header__container {
+    max-width: 288px;
+  }
+  .header__title {
+    font-size: 16px;
+    line-height: 24px;
+    z-index: 5;
+  }
+  .header__button-group {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: all 0.5s;
+    z-index: 5;
+  }
+  .header__button-line {
+    height: 3px;
+    width: 22px;
+    background-color: white;
+    margin: 4px;
+    transition: background-color 0.25s ease, opacity 0.25s ease,
+      transform 0.25s ease-in-out;
+    transform-origin: 50% 50%;
+  }
+  .header__button-line_esc:first-child {
+    transform: rotate(45deg) translate3d(4px, 4px, 0);
+  }
+  .header__button-line_esc:last-child {
+    transform: rotate(-45deg) translate3d(4px, -4px, 0);
+  }
+  .header__box_visible {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 50px; */
+  }
+  .header__link:first-of-type {
+    margin-top: 72px;
+  }
+  .header__link {
+    font-size: 18px;
+    line-height: 56px;
+    margin-left: 18px;
+  }
+  .header__link:last-of-type {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 22px;
+  }
+  .header__circle {
+    height: 56px;
+    width: 288px;
+  }
+}
+
+@media screen and (max-width: 400px) {
   
 }

@@ -6,7 +6,33 @@
  .app__background {
   background-image: url(../../images/header.jpg);
   background-size: 100%;
-  background-repeat: space;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-position: top;
   background-attachment: fixed; 
+  object-fit: contain;
  }
+
+ @media screen and (max-width: 1410px) {
+  .cards {
+    margin: 32px 0;
+    justify-items: center;
+  }
+  
+}
+
+@media screen and (max-width: 1000px) {
+  .app__background {
+    background-image: url(../../images/fonMiddle.jpg);
+    background-attachment: inherit; 
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .app__background {
+    background-position: center;
+    object-position: center;
+    object-fit: contain;
+  }
+}
+

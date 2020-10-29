@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Header from '../header/Header';
 import Search from '../search/Search';
@@ -10,13 +11,16 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className='app__background'>
-        <Header />
-        <Search />
-      </div>
-      <Results />
-      <About />
-      <Footer />
+      <BrowserRouter>
+        <div className='app__background'>
+          <Header />
+          <Search />
+        </div>
+        <Results />
+        <About />
+        <Footer />
+      </BrowserRouter>
+
     </div>
   );
 }

@@ -20,6 +20,7 @@
 .card__image {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  width: 100%;
   margin: 0;
 }
 
@@ -44,6 +45,7 @@
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
+  line-height: 30px;
   color: #1a1b22;
   margin: 0;
 }
@@ -73,4 +75,78 @@
   text-transform: uppercase;
   color: #b6bcbf;
   margin-bottom: 24px;
+}
+
+@media screen and (max-width: 1410px) {
+  .card {
+    width: 330px;
+    height: 480px;
+  }
+  .card__favourite {
+    top: 8px;
+    right: 8px;
+  }
+  .card__info {
+    margin: 16px;
+  }
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .card__text {
+    margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .card__image {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 224px;
+    height: 420px;
+  }
+  .card__favourite {
+    top: 8px;
+    right: 8px;
+  }
+  .card__info {
+    margin: 16px;
+    margin-top: 0;
+  }
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .card__text {
+    margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .card__image {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 288px;
+    height: 444px;
+  }
+  .card__info {
+   margin: 16px;
+  }
+  .card__text {
+    margin-bottom: 10px;
+  }
+  .card__image {
+   height: 196px;
+  }
+  .card__date {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .card__about {
+    margin: 0;
+  }
 }
