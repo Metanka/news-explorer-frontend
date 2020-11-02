@@ -16,6 +16,12 @@
   background-position: center;
   border-radius: 10px;
 }
+.card__trash {
+  background-image: url(../../images/trash.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
 
 .card__image {
   border-top-left-radius: 20px;
@@ -32,7 +38,7 @@
 .card__date {
   margin-top: 20px;
   margin-bottom: 12px;
-  font-family: Source Sans Pro;
+  font-family: Source Sans Pro, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -41,7 +47,7 @@
 }
 
 .card__title {
-  font-family: Roboto Slab;
+  font-family: Roboto Slab, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
@@ -51,7 +57,7 @@
 }
 
 .card__text {
-  font-family: Roboto;
+  font-family: Roboto, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -66,7 +72,7 @@
 }
 
 .card__about {
-  font-family: Roboto Slab;
+  font-family: Roboto Slab, Arial, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -77,6 +83,50 @@
   margin-bottom: 24px;
 }
 
+.card__tag {
+  position: absolute;
+  height: 28px;
+  font-size: 14px;
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  background-color: white;
+  text-align: center;
+  padding: 0 12px;
+  border-radius: 10px;
+  margin: 0;
+  padding-top: 12px;
+}
+
+.card__favourite:hover {
+  cursor: pointer;
+  background-image: url(../../images/bookmark.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+.card__favourite_active {
+  background-image: url(../../images/bookmarkactive.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+.card__tag_position-left {
+  top: 24px;
+  left: 24px;
+}
+
+.card__tag_position-right {
+  top: 24px;
+  right: 69px;
+  display: none;
+}
+
+.card__tag_visible {
+  display: block;
+}
+
 @media screen and (max-width: 1410px) {
   .card {
     width: 330px;
@@ -85,6 +135,14 @@
   .card__favourite {
     top: 8px;
     right: 8px;
+  }
+
+  .card__tag_position-left {
+    top: 8px;
+    left: 8px;
+  }
+  .card__tag_position-right {
+    top: 8px;
   }
   .card__info {
     margin: 16px;
@@ -119,6 +177,10 @@
     font-size: 22px;
     line-height: 24px;
   }
+  .card__tag_position-right {
+    padding: 5px;
+    height: 30px;
+  }
   .card__text {
     margin-top: 10px;
     margin-bottom: 12px;
@@ -134,13 +196,13 @@
     height: 444px;
   }
   .card__info {
-   margin: 16px;
+    margin: 16px;
   }
   .card__text {
     margin-bottom: 10px;
   }
   .card__image {
-   height: 196px;
+    height: 196px;
   }
   .card__date {
     margin-top: 0;
@@ -148,5 +210,9 @@
   }
   .card__about {
     margin: 0;
+  }
+  .card__tag_position-right {
+    height: 16px;
+    padding: 12px;
   }
 }

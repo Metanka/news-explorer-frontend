@@ -1,15 +1,5 @@
-@font-face {
-  font-family: "Roboto Slab";
-  src: url(./vendor/fonts-backend/robotoslab-regular.woff);
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url(./vendor/fonts-backend/roboto-medium.woff);
-  font-weight: 500;
-  font-style: normal;
-}
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
 
 body {
   margin: 0;

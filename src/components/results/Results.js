@@ -2,20 +2,35 @@ import React from 'react';
 import './Results.css';
 import NewsCard from '../newsCard/NewsCard';
 
-const Results = () => {
+const Results = ({main, saved}) => {
 
   return (
     <div className='results'>
       <div className='results__box'>
-        <h2 className='results__title'>
-          Результаты поиска
-      </h2>
+        {main ?
+          <h2 className='results__title'>
+            Результаты поиска
+      </h2> : ''}
         <div className='cards'>
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
+          {saved ? <>
+            <NewsCard isSaved={true} tag={'цветочки'} />
+            <NewsCard isSaved={true} tag={'жучки'} />
+            <NewsCard isSaved={true} tag={'паучки'} />
+            <NewsCard isSaved={true} tag={'лепесточки'} />
+            <NewsCard isSaved={true} tag={'грибочки'} />
+          </> : ''
+          }
+          {main ? <>
+            <NewsCard />
+            <NewsCard />
+            <NewsCard />
+          </>
+            : ''
+          }
         </div>
-        <button className='results__add'>Показать еще</button>
+        {main ?
+          <button className='results__add'>Показать еще</button> : ''
+        }
       </div>
     </div>
   );

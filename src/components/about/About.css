@@ -28,7 +28,7 @@
 }
 
 .about__title {
-  font-family: Roboto Slab;
+  font-family: Roboto Slab, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 40px;
@@ -37,7 +37,7 @@
 }
 
 .about__info {
-  font-family: Roboto;
+  font-family: Roboto, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

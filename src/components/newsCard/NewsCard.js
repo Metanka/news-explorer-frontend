@@ -2,10 +2,31 @@ import React from 'react';
 import wallpaper from '../../images/image_08.jpg';
 import './NewsCard.css';
 
-const NewsCard = () => {
+const NewsCard = ({ isSaved, tag}) => {
+  const [isDelete, setIsDelete] = React.useState(false);
+  const [isFavourite, setIsFavourite] = React.useState(false);
+
+  const handleDelete = () => {
+    setIsDelete(!isDelete);
+  }
+  const handleFavourite = () => {
+    setIsFavourite(!isFavourite);
+  }
+
   return (
     <div className="card">
-      <button className="card__favourite"></button>
+      {
+        tag ?
+        <span  className='card__tag card__tag_position-left'>{tag}</span>
+        : ''
+      }
+     
+      <span className={`card__tag card__tag_position-right ${isDelete ? 'card__tag_visible' : ''}`}>Убрать из сохраненных</span>
+      <button onClick={isSaved ? handleDelete : handleFavourite } 
+      className={tag ? 
+      'card__favourite card__trash' : 
+      `card__favourite ${isFavourite ? 'card__favourite_active' : ''}`
+      } />
       <img className="card__image" alt='фоновое изображение' src={wallpaper} />
       <div className="card__info">
         <p className='card__date'>2 августа, 2019</p>
