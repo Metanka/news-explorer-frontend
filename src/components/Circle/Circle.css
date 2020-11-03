@@ -1,0 +1,37 @@
+@keyframes rotate-animation {
+  0% { transform: rotate(0deg);  }
+  100% { transform: rotate(360deg); }
+}
+
+.circle {
+  background: #f5f6f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.circle__loader {
+  background-image: url(../../images/Ellipse.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 74px;
+  height: 74px;
+  z-index: 3;
+  margin-bottom: 24px;
+  transform: rotate(360deg);
+  animation: .6s linear 0s normal none infinite running rotate-animation;
+}
+
+.button.loading {
+  animation: .6s linear 0s normal none infinite running rotate-animation;
+}
+
+.circle__text {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: Roboto, Arial, sans-serif;
+  text-align: center;
+  color: #b6bcbf;
+}

@@ -1,0 +1,25 @@
+.main__background {
+  background-image: url(../../images/header.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed; 
+  object-fit: contain;
+ }
+
+@media screen and (max-width: 1000px) {
+  .main__background {
+    background-image: url(../../images/fonMiddle.jpg);
+    background-attachment: inherit; 
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main__background {
+    background-position: center;
+    object-position: center;
+    object-fit: contain;
+  }
+}
+

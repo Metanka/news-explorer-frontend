@@ -1,0 +1,218 @@
+.card {
+  width: 400px;
+  height: 576px;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+}
+
+.card__favourite {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background-image: url(../../images/Group12.png);
+  background-position: center;
+  border-radius: 10px;
+}
+.card__trash {
+  background-image: url(../../images/trash.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+.card__image {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  margin: 0;
+}
+
+.card__info {
+  margin: 24px;
+  margin-top: 0;
+}
+
+.card__date {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-family: Source Sans Pro, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+}
+
+.card__title {
+  font-family: Roboto Slab, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+.card__text {
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  margin-top: 16px;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+}
+
+.card__about {
+  font-family: Roboto Slab, Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #b6bcbf;
+  margin-bottom: 24px;
+}
+
+.card__tag {
+  position: absolute;
+  height: 28px;
+  font-size: 14px;
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  background-color: white;
+  text-align: center;
+  padding: 0 12px;
+  border-radius: 10px;
+  margin: 0;
+  padding-top: 12px;
+}
+
+.card__favourite:hover {
+  cursor: pointer;
+  background-image: url(../../images/bookmark.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+.card__favourite_active {
+  background-image: url(../../images/bookmarkactive.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+.card__tag_position-left {
+  top: 24px;
+  left: 24px;
+}
+
+.card__tag_position-right {
+  top: 24px;
+  right: 69px;
+  display: none;
+}
+
+.card__tag_visible {
+  display: block;
+}
+
+@media screen and (max-width: 1410px) {
+  .card {
+    width: 330px;
+    height: 480px;
+  }
+  .card__favourite {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__tag_position-left {
+    top: 8px;
+    left: 8px;
+  }
+  .card__tag_position-right {
+    top: 8px;
+  }
+  .card__info {
+    margin: 16px;
+  }
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .card__text {
+    margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .card__image {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 224px;
+    height: 420px;
+  }
+  .card__favourite {
+    top: 8px;
+    right: 8px;
+  }
+  .card__info {
+    margin: 16px;
+    margin-top: 0;
+  }
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .card__tag_position-right {
+    padding: 5px;
+    height: 30px;
+  }
+  .card__text {
+    margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .card__image {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 288px;
+    height: 444px;
+  }
+  .card__info {
+    margin: 16px;
+  }
+  .card__text {
+    margin-bottom: 10px;
+  }
+  .card__image {
+    height: 196px;
+  }
+  .card__date {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .card__about {
+    margin: 0;
+  }
+  .card__tag_position-right {
+    height: 16px;
+    padding: 12px;
+  }
+}
