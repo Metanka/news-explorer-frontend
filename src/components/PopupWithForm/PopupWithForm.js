@@ -63,9 +63,9 @@ const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
               <div className="input__box">
                 <span className='input__type'>Пароль</span>
                 <input
-                  id='email'
-                  name='email'
-                  type='email'
+                  id='password'
+                  name='password'
+                  type='password'
                   placeholder='Введите пароль'
                   required
                   className="popup__input"

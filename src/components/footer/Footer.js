@@ -12,12 +12,16 @@ const Footer = () => {
       <p className='footer__censure'>© 2020 Supersite, Powered by News API</p>
       <div className='footer__box'>
         <ul className='footer__menu'>
-          <NavLink to='/' className='footer__link'>
-            Главная
+          <li>
+            <NavLink to='/' className='footer__link'>
+              Главная
         </NavLink>
-          <a href='https://praktikum.yandex.ru/' className='footer__link'>
-            Яндекс.Практикум
+          </li>
+          <li>
+            <a href='https://praktikum.yandex.ru/' className='footer__link'>
+              Яндекс.Практикум
         </a>
+          </li>
         </ul>
         <ul className='footer__social'>
           <li className='footer__item'>
