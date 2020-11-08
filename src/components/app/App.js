@@ -4,7 +4,6 @@ import './App.css';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 
-
 const App = () => {
 
   return (

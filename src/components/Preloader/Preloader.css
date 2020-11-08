@@ -36,16 +36,14 @@
   height: 74px;
 	border: 1px solid rgba(0, 0, 0, 0.5);
   border-left: none;
-	border-radius: 50%;
-  animation: spin .75s infinite linear;
-}
-.icon-not {
-  width: 96px;
-  height: 96px;
-  background-image: url(../../images/search.svg);
+  border-radius: 50%;
+  background-image: url(../../images/Ellipse.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  animation: spin .75s infinite linear;
+
 }
+
 @media screen and (max-width: 768px) {
   .preloader {
     padding: 40px 0;

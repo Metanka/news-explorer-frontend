@@ -40,7 +40,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
-  margin-bottom: 64px;
+  margin: 64px 0;
 }
 
 .results__add:hover {

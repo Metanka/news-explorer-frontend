@@ -18,6 +18,9 @@
   line-height: 24px;
   cursor: pointer;
 }
+.header__title-link {
+  text-decoration: none;
+}
 
 .header__box {
   display: flex;

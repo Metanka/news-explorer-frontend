@@ -3,6 +3,17 @@ import {NavLink} from 'react-router-dom';
 import './PopupWithForm.css';
 
 const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  }
+
   let form = {};
 
   if (isLogin) {
@@ -40,8 +51,8 @@ const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
 
 
   return (
-    <div  onClick={handleClose}
-    className={`popup popup_login ${isPopupOpen ? '' : 'popup_hidden'}`}>
+    <div onClick={handleClose}
+      className={`popup popup_login ${isPopupOpen ? '' : 'popup_hidden'}`}>
       <form className={`popup__container popup__container_login`} >
         <button onClick={toggleForm} className={`btn-close btn-close_login`} type='button' />
         <h2 className={`popup__title`}>{form.title}</h2>
@@ -51,6 +62,7 @@ const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
               <div className="input__box">
                 <span className='input__type'>Email</span>
                 <input
+                  onChange={handleEmailChange}
                   id='email'
                   name='email'
                   type='email'
@@ -63,9 +75,10 @@ const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
               <div className="input__box">
                 <span className='input__type'>Пароль</span>
                 <input
+                  onChange={handlePasswordChange}
                   id='password'
                   name='password'
-                  type='password'
+                  type='text'
                   placeholder='Введите пароль'
                   required
                   className="popup__input"

@@ -13,7 +13,7 @@ const Header = ({theme, toggleForm, isSaved, name, isPopupOpen}) => {
   return (
     <div className='header'>
       <div className='header__container'>
-        <NavLink to='/'>
+        <NavLink className='header__title-link' to='/'>
           <h2 className={`header__title ${theme ? 'header_light-theme' : ''} ${isMenuOpen ? 'header_light-theme' : ''}`}>NewsExplorer</h2>
         </NavLink>
         <Navigation
