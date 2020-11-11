@@ -1,14 +1,11 @@
 import React from 'react';
 import './Results.css';
 import NewsCard from '../newsCard/NewsCard';
-import {newsApi} from '../../utils/NewsApi';
 import {myData} from '../../utils/Date';
 
 const Results = ({main, saved, articles}) => {
   const [numbersArticle, setNumbersArticle] = React.useState(3);
   const [savedArticles, setSavedArticles] = React.useState([]);
-
-  
 
   //при нажатии добавляет +3 строки массива
   const handleAddArticles = () => {

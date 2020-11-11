@@ -1,45 +1,11 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-import './PopupWithForm.css';
+import {NavLink, useHistory} from 'react-router-dom';
+import './Register.css';
 
-const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  }
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  }
-
-  let form = {};
-
-  if (isLogin) {
-    form = {
-      title: 'Вход',
-      button: 'Войти',
-      link: 'Зарегистрироваться'
-    }
-  } else if (isConfirm) {
-    form = {
-      title: 'Пользователь успешно зарегистрирован!',
-      link: 'Войти'
-    }
-  } else {
-    form = {
-      title: 'Регистрация',
-      button: 'Зарегистрироваться',
-      link: 'Войти'
-    }
-  }
-
-  function handleClose(e) {
-    if (e.target.classList.contains('popup')) {
-      toggleForm();
-    }
-  }
+const Register = ({isConfirm, isLogin, isPopupOpen, toggleForm, onLoginSubmit}) => {
+  const [loginEmail, setLoginEmail] = React.useState('');
+  const [loginPassword, setLoginPassword] = React.useState('');
+  const history = useHistory();
 
   React.useEffect(() => {
     document.addEventListener('keydown', (e) => {
@@ -49,13 +15,32 @@ const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
     });
   }, [toggleForm, isPopupOpen]);
 
+  const handleEmailChange = (e) => {
+    setLoginEmail(e.target.value);
+  }
+
+  const handlePasswordChange = (e) => {
+    setLoginPassword(e.target.value);
+  }
+
+  function handleClose(e) {
+    if (e.target.classList.contains('popup')) {
+      toggleForm();
+    }
+  }
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    onLoginSubmit(loginEmail, loginPassword);
+    history.push('/');
+  }
 
   return (
     <div onClick={handleClose}
       className={`popup popup_login ${isPopupOpen ? '' : 'popup_hidden'}`}>
       <form className={`popup__container popup__container_login`} >
         <button onClick={toggleForm} className={`btn-close btn-close_login`} type='button' />
-        <h2 className={`popup__title`}>{form.title}</h2>
+        <h2 className={`popup__title`}>Вход</h2>
         {isConfirm ? '' :
           <>
             <>
@@ -89,19 +74,18 @@ const PopupWithForm = ({isConfirm, isLogin, isPopupOpen, toggleForm}) => {
             <button
               type="submit"
               className='popup__btn'
+              onClick={handleLoginSubmit}
             >
-              {form.button}
-            </button>
+              Войти
+          </button>
           </>
         }
-        <span className='popup__help'>{isConfirm ? '' : 'Или '}
-          <NavLink to='/' className='popup__link'>{form.link}</NavLink>
+        <span className='popup__help'>Или
+          <NavLink to='/' className='popup__link'> Зарегистрироваться</NavLink>
         </span>
       </form>
-
-
     </div >
   )
 }
 
-export default React.memo(PopupWithForm);
+export default React.memo(Register);

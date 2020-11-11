@@ -1,6 +1,5 @@
 import React from 'react';
 import './NewsCard.css';
-import {data} from '../../utils/Date';
 
 const NewsCard = ({isSaved, tag, title, text, author, image, date, link}) => {
   const [isDelete, setIsDelete] = React.useState(false);
