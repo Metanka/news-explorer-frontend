@@ -3,7 +3,7 @@ import Navigation from '../Navigation/Navigation';
 import {NavLink} from 'react-router-dom';
 import './Header.css';
 
-const Header = ({theme, toggleForm, isSaved, name, isPopupOpen}) => {
+const Header = ({theme, toggleForm, setErrorMessage, handleLoginOut, name, isPopupOpen, loggedIn}) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const handleBurger = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -19,10 +19,13 @@ const Header = ({theme, toggleForm, isSaved, name, isPopupOpen}) => {
         <Navigation
           theme={theme}
           toggleForm={toggleForm}
-          isSaved={isSaved} name={name}
+          name={name}
+          handleLoginOut={handleLoginOut}
           isPopupOpen={isPopupOpen}
           handleBurger={handleBurger}
+          loggedIn={loggedIn}
           isMenuOpen={isMenuOpen}
+          setErrorMessage={setErrorMessage}
         />
       </div>
     </div >

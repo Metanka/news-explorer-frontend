@@ -6,10 +6,12 @@ import Results from '../results/Results';
 import Footer from '../footer/Footer';
 
 
-const SavedNews = () => {
+const SavedNews = ({loggedIn, name, handleLoginOut}) => {
+
+  console.log(name);
   return (
     <>
-      <Header isSaved={true} name='Алина' />
+      <Header loggedIn={loggedIn} name={name} handleLoginOut={handleLoginOut} />
       <SavedNewsHeader />
       <Results saved={true} />
       <Footer />

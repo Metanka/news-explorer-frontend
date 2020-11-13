@@ -22,8 +22,6 @@ class NewsApi {
         return this._getResponseData(res);
       });
   }
-
-
 }
 
 export const newsApi = new NewsApi({

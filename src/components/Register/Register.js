@@ -1,11 +1,12 @@
 import React from 'react';
-import {NavLink, useHistory} from 'react-router-dom';
 import './Register.css';
+import {useFormWithValidation} from '../../utils/validationForm';
 
-const Register = ({isConfirm, isLogin, isPopupOpen, toggleForm, onLoginSubmit}) => {
-  const [loginEmail, setLoginEmail] = React.useState('');
-  const [loginPassword, setLoginPassword] = React.useState('');
-  const history = useHistory();
+const Register = ({isPopupOpen, setErrorMessage, toggleForm, errorMessage, handleRegistrationSubmit, setIsLoginOpen}) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [name, setName] = React.useState('');
+  const validate = useFormWithValidation();
 
   React.useEffect(() => {
     document.addEventListener('keydown', (e) => {
@@ -16,72 +17,98 @@ const Register = ({isConfirm, isLogin, isPopupOpen, toggleForm, onLoginSubmit}) 
   }, [toggleForm, isPopupOpen]);
 
   const handleEmailChange = (e) => {
-    setLoginEmail(e.target.value);
+    setEmail(e.target.value);
+    validate.handleChange(e);
+  }
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   }
 
   const handlePasswordChange = (e) => {
-    setLoginPassword(e.target.value);
+    setPassword(e.target.value);
+    validate.handleChange(e);
   }
 
   function handleClose(e) {
     if (e.target.classList.contains('popup')) {
       toggleForm();
+      validate.resetForm();
     }
   }
 
-  const handleLoginSubmit = (e) => {
+  const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    onLoginSubmit(loginEmail, loginPassword);
-    history.push('/');
+    handleRegistrationSubmit(password, email, name);
+    toggleForm();
+  }
+  const handleLink = () => {
+    setIsLoginOpen(true);
+    setErrorMessage('');
+    toggleForm();
   }
 
   return (
     <div onClick={handleClose}
       className={`popup popup_login ${isPopupOpen ? '' : 'popup_hidden'}`}>
-      <form className={`popup__container popup__container_login`} >
+      <form onSubmit={useFormWithValidation} className={`popup__container popup__container_login`} >
         <button onClick={toggleForm} className={`btn-close btn-close_login`} type='button' />
-        <h2 className={`popup__title`}>Вход</h2>
-        {isConfirm ? '' :
+        <h2 className={`popup__title`}>Регистрация</h2>
+        <>
           <>
-            <>
-              <div className="input__box">
-                <span className='input__type'>Email</span>
-                <input
-                  onChange={handleEmailChange}
-                  id='email'
-                  name='email'
-                  type='email'
-                  placeholder='Введите почту'
-                  required
-                  className="popup__input"
-                />
-                <span className="popup__input_text_error" />
-              </div>
-              <div className="input__box">
-                <span className='input__type'>Пароль</span>
-                <input
-                  onChange={handlePasswordChange}
-                  id='password'
-                  name='password'
-                  type='text'
-                  placeholder='Введите пароль'
-                  required
-                  className="popup__input"
-                />
-                <span className="popup__input_text_error"></span>
-              </div>
-            </>
-            <button
-              type="submit"
-              className='popup__btn'
-              onClick={handleLoginSubmit}
-            >
-              Войти
-          </button>
+            <div className="input__box">
+              <span className='input__type'>Email</span>
+              <input
+                onChange={handleEmailChange}
+                id='email'
+                name='email'
+                type='email'
+                placeholder='Введите почту'
+                required
+                className="popup__input"
+              />
+              <span className="popup__input_text_error">{validate.errors.email}</span>
+            </div>
+            <div className="input__box">
+              <span className='input__type'>Пароль</span>
+              <input
+                onChange={handlePasswordChange}
+                id='password'
+                name='password'
+                type='password'
+                minlength='6'
+                placeholder='Введите пароль'
+                required
+                className="popup__input"
+              />
+              <span className="popup__input_text_error">{validate.errors.password}</span>
+            </div>
+            <div className="input__box">
+              <span className='input__type'>Имя</span>
+              <input
+                onChange={handleNameChange}
+                id='name'
+                name='name'
+                type='text'
+                placeholder='Введите свое имя'
+                required
+                className="popup__input"
+              />
+              <span className="popup__input_text_error"></span>
+            </div>
           </>
-        }
+          <span className="popup__input_text_error">{errorMessage}</span>
+          <button
+            type="submit"
+            className={validate.isValid ? 'popup__btn popup__btn_active' : 'popup__btn'}
+            onClick={handleRegisterSubmit}
+            disabled={!validate.isValid}
+          >
+            Зарегистрироваться
+          </button>
+        </>
         <span className='popup__help'>Или
-          <NavLink to='/' className='popup__link'> Зарегистрироваться</NavLink>
+          <span onClick={handleLink} className='popup__link'> Войти</span>
         </span>
       </form>
     </div >

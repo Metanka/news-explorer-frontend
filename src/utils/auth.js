@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.metanka.students.nomoreparties.co/';
+const BASE_URL = 'https://api.themetanka.students.nomoreparties.xyz';
 
 export const register = (password, email, name, callback) => {
   return fetch(`${BASE_URL}/signup`, {
