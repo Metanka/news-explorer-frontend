@@ -6,7 +6,7 @@ import {myData} from '../../utils/Date';
 const Results = ({main, saved, articles, handleFlag, search}) => {
   const [numbersArticle, setNumbersArticle] = React.useState(3);
   const [savedArticles, setSavedArticles] = React.useState([]);
-
+  console.log();
   //при нажатии добавляет +3 строки массива
   const handleAddArticles = () => {
     setNumbersArticle(numbersArticle + 3);
