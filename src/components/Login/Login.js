@@ -83,7 +83,7 @@ const Login = ({isConfirm,
                   type='password'
                   placeholder='Введите пароль'
                   required
-                  minlength='6'
+                  minLength='8'
                   className="popup__input"
                 />
                 <span className="popup__input_text_error">{validate.errors.password}</span>

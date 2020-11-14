@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewsCard.css';
 
-const NewsCard = ({isSaved, tag, title, text, author, image, date, link}) => {
+const NewsCard = ({isSaved, tag, title, text, source, image, date, link, handleFlag, keyword}) => {
   const [isDelete, setIsDelete] = React.useState(false);
   const [isFavourite, setIsFavourite] = React.useState(false);
 
@@ -10,8 +10,12 @@ const NewsCard = ({isSaved, tag, title, text, author, image, date, link}) => {
   }
   const handleFavourite = () => {
     setIsFavourite(!isFavourite);
+    handleFlag(keyword, title, text, date, source, link, image);
   }
-
+  console.log(handleFlag);
+  console.log(JSON.stringify({
+    keyword, title, text, date, source, link, image,
+  }));
   return (
     <div className="card">
       {
@@ -32,7 +36,7 @@ const NewsCard = ({isSaved, tag, title, text, author, image, date, link}) => {
           <p className='card__date'>{date}</p>
           <h2 className="card__title">{title}</h2>
           <p className='card__text'>{text}</p>
-          <p className='card__about'>{author}</p>
+          <p className='card__about'>{source}</p>
         </div>
       </a>
     </div>

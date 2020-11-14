@@ -22,12 +22,15 @@ const Main = ({
   isRegister,
   setIsRegister,
   isConfirmOpen,
+  search,
+  setSearch,
+  isLoginOpen,
+  setIsLoginOpen,
   name,
+  handleFlag,
   handleLoginOut,
   setIsConfirmOpen
 }) => {
-  const [isLoginOpen, setIsLoginOpen] = React.useState(false);
-  const [search, setSearch] = React.useState('');
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   // переключатели попапов
@@ -52,6 +55,7 @@ const Main = ({
       .then((data) => {
         setIsLoading(true)
         localStorage.setItem('articles', JSON.stringify(data.articles));
+        localStorage.setItem('search', search);
         setArticles(data.articles);
       })
       .catch(err => console.log(err))
@@ -60,7 +64,7 @@ const Main = ({
       });
   }
 
-  console.log(articles);
+   console.log(articles);
 
   return (
     <>
@@ -74,12 +78,14 @@ const Main = ({
         name={name} />
         <Search handleSearch={handleSearch} setSearch={setSearch} />
       </div>
-      {((articles === (undefined || null)) || articles.length === 0) ? '' :
+      {(!Array.isArray(articles)) ? '' :
         <Results main={true}
+          handleFlag={handleFlag}
           articles={articles}
-          setArticles={setArticles} />
+          setArticles={setArticles}
+          search={search} />
       }
-      {articles.length === 0 ? <NotFound /> : ''}
+      {Array.isArray(articles) ? (articles.length) === 0 ? <NotFound /> : '' : ''}
       {isLoading ? <Preloader /> : ''}
       <About />
       <Footer />

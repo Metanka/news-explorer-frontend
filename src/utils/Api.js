@@ -12,8 +12,8 @@ class Api {
     }
   }
 
-  saveArticle(keyword, title, text, date, source, link, image,) {
-    return fetch(`${this._baseUrl}/cards`, {
+  saveArticle(keyword, title, text, date, source, link, image) {
+    return fetch(`${this._baseUrl}/articles`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -29,6 +29,7 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://api.themetanka.students.nomoreparties.xyz',
   headers: {
+    authorization: `Bearer ${localStorage.getItem('token')}` ,
     'Content-Type': 'application/json'
   }
 })

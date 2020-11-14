@@ -76,7 +76,7 @@ const Register = ({isPopupOpen, setErrorMessage, toggleForm, errorMessage, handl
                 id='password'
                 name='password'
                 type='password'
-                minlength='6'
+                minLength='8'
                 placeholder='Введите пароль'
                 required
                 className="popup__input"
