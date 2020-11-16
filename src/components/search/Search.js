@@ -1,14 +1,14 @@
 import React from 'react';
 import './Search.css';
 
-const Search = ({handleSearch, setSearch}) => {
+const Search = ({ handleSearch, setSearch }) => {
   const handleSearchInput = (e) => {
     setSearch(e.target.value);
-  }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch();
-  }
+  };
   return (
     <div className='search'>
       <h1 className='search__title'>Что творится в мире?</h1>
@@ -19,6 +19,6 @@ const Search = ({handleSearch, setSearch}) => {
       </form>
     </div>
   );
-}
+};
 
 export default React.memo(Search);

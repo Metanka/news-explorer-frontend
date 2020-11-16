@@ -1,4 +1,4 @@
-import {myData} from './Date';
+import { myData } from './Date';
 
 class NewsApi {
   constructor(options) {
@@ -6,12 +6,12 @@ class NewsApi {
     this._headers = options.headers;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _getResponseData(res) {
     if (res.ok) {
       return res.json();
-    } else {
-      return Promise.reject(`Ошибка: ${res.status}`);
     }
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
   getAllArticles(tag) {
@@ -25,13 +25,13 @@ class NewsApi {
 }
 
 export const newsApi = new NewsApi({
-  baseUrl: 'http://newsapi.org/v2/everything?' +
-  `from=${myData.getLastWeek()}&` +
-  `to=${myData.getToday()}&` +
+  baseUrl: 'http://newsapi.org/v2/everything?'
+  + `from=${myData.getLastWeek()}&`
+  + `to=${myData.getToday()}&`
   // 'country=ru&' +
-  'sortBy=popularity&' +
-  'pageSize=100&' +
-  'apiKey=ab9097caa3e848c4b28c5ed7b3805a19',
+  + 'sortBy=popularity&'
+  + 'pageSize=100&'
+  + 'apiKey=ab9097caa3e848c4b28c5ed7b3805a19',
   headers: {
     // 'Content-Type': 'application/json'
   }

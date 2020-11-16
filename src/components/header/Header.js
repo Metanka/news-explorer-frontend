@@ -1,14 +1,15 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
-const Header = ({theme, toggleForm, setErrorMessage, handleLoginOut, name, isPopupOpen, loggedIn}) => {
+const Header = ({
+  theme, toggleForm, setErrorMessage, handleLoginOut, name, isPopupOpen, loggedIn
+}) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const handleBurger = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div className='header'>
@@ -30,6 +31,6 @@ const Header = ({theme, toggleForm, setErrorMessage, handleLoginOut, name, isPop
       </div>
     </div >
   );
-}
+};
 
 export default React.memo(Header);

@@ -1,11 +1,14 @@
-import React, { useCallback } from 'react';
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import React from 'react';
+import {
+  BrowserRouter, Switch, Route
+} from 'react-router-dom';
 import './App.css';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import {register, getToken, auth} from '../../utils/auth';
-import {api, saveArticle} from '../../utils/Api';
+import { register, getToken, auth } from '../../utils/auth';
+import { api } from '../../utils/Api';
 
 const token = localStorage.getItem('token');
 
@@ -14,29 +17,44 @@ const App = () => {
   const [currentUser, setCurrentUser] = React.useState({});
   const [isRegister, setIsRegister] = React.useState(false);
   const [isLoginOpen, setIsLoginOpen] = React.useState(false);
-  const [name, setName] = React.useState('');
-  const [selectedArticle, setSelectedArticle] = React.useState({});
+  const [nick, setNick] = React.useState('');
+  // const [selectedArticle, setSelectedArticle] = React.useState({});
   const [isConfirmOpen, setIsConfirmOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState('');
-  const [keyword, setKeyword] = React.useState('');
+  const [key, setKey] = React.useState('');
+
+  const tokenCheck = () => {
+    const tokenLocal = localStorage.getItem('token');
+    if (tokenLocal) {
+      getToken(tokenLocal).then((res) => {
+        if (res) {
+          setNick(res.name);
+          setLoggedIn(true);
+          setCurrentUser(res);
+        }
+      })
+        .catch(err => console.warn(err));
+    }
+    return () => {};
+  };
 
   React.useEffect(() => {
     tokenCheck();
-    setKeyword(localStorage.getItem('search'));
+    setKey(localStorage.getItem('search'));
   }, [loggedIn]);
 
   const handleRegistrationSubmit = (password, email, name) => {
     register(password, email, name, setIsRegister)
-      .then((res) => {
+      .then(() => {
         setLoggedIn(true);
         setIsRegister(false);
         setErrorMessage('');
         setIsConfirmOpen(true);
       })
-      .catch(err => {
+      .catch(() => {
         setErrorMessage('Такой пользователь уже есть');
-      })
-  }
+      });
+  };
 
   const handleLoginSubmit = (loginEmail, loginPassword) => {
     auth(loginEmail, loginPassword)
@@ -48,36 +66,23 @@ const App = () => {
           setIsLoginOpen(false);
         }
       })
-      .catch((err) => console.log(err));
-  }
-
-  const tokenCheck = () => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      getToken(token).then((res) => {
-        if (res) {
-          setName(res.name);
-          setLoggedIn(true);
-        }
-      })
-        .catch(err => console.log(err))
-    }
-  }
-
-  const handleFlag = (keyword, title, text, date, source, link, image) => {
-    api.saveArticle(keyword, title, text, date, source, link, image)
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-  }
+      .catch((err) => console.warn(err));
+  };
 
   const handleLoginOut = () => {
     setLoggedIn(false);
     localStorage.removeItem('token');
-    setName('');
-  }
+    setNick('');
+  };
+
+  const handleFlag = (keyword, title, text, date, source, link, image) => {
+    api.saveArticle(keyword, title, text, date, source, link, image)
+      .catch(err => console.warn(err));
+  };
 
   return (
     <div className="App">
+      <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <BrowserRouter>
         <Switch>
           <ProtectedRoute
@@ -85,7 +90,7 @@ const App = () => {
             path='/saved-news'
             component={SavedNews}
             loggedIn={loggedIn}
-            name={name}
+            name={nick}
             handleLoginOut={handleLoginOut}
           >
           </ProtectedRoute>
@@ -97,14 +102,14 @@ const App = () => {
               isRegister={isRegister}
               setIsRegister={setIsRegister}
               isConfirmOpen={isConfirmOpen}
-              name={name}
+              name={nick}
               setIsConfirmOpen={setIsConfirmOpen}
               errorMessage={errorMessage}
               handleLoginOut={handleLoginOut}
               setErrorMessage={setErrorMessage}
               handleLoginSubmit={handleLoginSubmit}
-              search={keyword}
-              setSearch={setKeyword}
+              search={key}
+              setSearch={setKey}
               handleFlag={handleFlag}
               isLoginOpen={isLoginOpen}
               setIsLoginOpen={setIsLoginOpen}
@@ -112,8 +117,9 @@ const App = () => {
           </Route>
         </Switch>
       </BrowserRouter>
+      </CurrentUserContext.Provider>
     </div>
   );
-}
+};
 
 export default React.memo(App);

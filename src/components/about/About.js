@@ -1,9 +1,8 @@
 import React from 'react';
-import photo from '../../images/IMG.jpg'
+import photo from '../../images/IMG.jpg';
 import './About.css';
 
 const About = () => {
-
   return (
     <div className='about'>
       <div className='about__photo-box'>
@@ -15,6 +14,6 @@ const About = () => {
       </div>
     </div>
   );
-}
+};
 
 export default React.memo(About);

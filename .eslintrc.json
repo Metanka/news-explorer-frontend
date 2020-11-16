@@ -7,7 +7,6 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:import/warnings",
-        "plugin:import/errors",
         "airbnb-base/legacy"
     ],
     "parserOptions": {
@@ -22,6 +21,8 @@
         "import"
     ],
     "rules": {
-        "no-console": ["warn", { "allow": ["warn", "error"] }]
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "react/prop-types": 0,
+        "no-underscore-dangle": 0
     }
 }

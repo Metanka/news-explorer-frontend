@@ -1,14 +1,15 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
-import {useFormWithValidation} from '../../utils/validationForm';
+import { useHistory } from 'react-router-dom';
+import { useFormWithValidation } from '../../utils/validationForm';
 import './Login.css';
 
-const Login = ({isConfirm, 
-  setErrorMessage, 
-  isPopupOpen, 
-  toggleForm, 
-  onLoginSubmit, 
-  setIsRegisterOpen,
+const Login = ({
+  isConfirm,
+  setErrorMessage,
+  isPopupOpen,
+  toggleForm,
+  onLoginSubmit,
+  setIsRegisterOpen
 }) => {
   const [loginEmail, setLoginEmail] = React.useState('');
   const [loginPassword, setLoginPassword] = React.useState('');
@@ -26,12 +27,12 @@ const Login = ({isConfirm,
   const handleEmailChange = (e) => {
     setLoginEmail(e.target.value);
     validate.handleChange(e);
-  }
+  };
 
   const handlePasswordChange = (e) => {
     setLoginPassword(e.target.value);
     validate.handleChange(e);
-  }
+  };
 
   function handleClose(e) {
     if (e.target.classList.contains('popup')) {
@@ -44,22 +45,22 @@ const Login = ({isConfirm,
     e.preventDefault();
     onLoginSubmit(loginEmail, loginPassword);
     history.push('/');
-  }
+  };
 
   const handleLink = () => {
     setIsRegisterOpen(true);
     setErrorMessage('');
     toggleForm();
-  }
+  };
 
   return (
     <div onClick={handleClose}
       className={`popup popup_login ${isPopupOpen ? '' : 'popup_hidden'}`}>
-      <form onSubmit={useFormWithValidation} className={`popup__container popup__container_login`} >
-        <button onClick={toggleForm} className={`btn-close btn-close_login`} type='button' />
-        <h2 className={`popup__title`}>Вход</h2>
-        {isConfirm ? '' :
-          <>
+      <form onSubmit={useFormWithValidation} className={'popup__container popup__container_login'} >
+        <button onClick={toggleForm} className={'btn-close btn-close_login'} type='button' />
+        <h2 className={'popup__title'}>Вход</h2>
+        {isConfirm ? ''
+          : <>
             <>
               <div className="input__box">
                 <span className='input__type'>Email</span>
@@ -104,7 +105,7 @@ const Login = ({isConfirm,
         </span>
       </form>
     </div >
-  )
-}
+  );
+};
 
 export default React.memo(Login);

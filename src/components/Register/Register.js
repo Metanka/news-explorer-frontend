@@ -1,8 +1,10 @@
 import React from 'react';
 import './Register.css';
-import {useFormWithValidation} from '../../utils/validationForm';
+import { useFormWithValidation } from '../../utils/validationForm';
 
-const Register = ({isPopupOpen, setErrorMessage, toggleForm, errorMessage, handleRegistrationSubmit, setIsLoginOpen}) => {
+const Register = ({
+  isPopupOpen, setErrorMessage, toggleForm, errorMessage, handleRegistrationSubmit, setIsLoginOpen
+}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [name, setName] = React.useState('');
@@ -19,16 +21,16 @@ const Register = ({isPopupOpen, setErrorMessage, toggleForm, errorMessage, handl
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     validate.handleChange(e);
-  }
+  };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
-  }
+  };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     validate.handleChange(e);
-  }
+  };
 
   function handleClose(e) {
     if (e.target.classList.contains('popup')) {
@@ -41,19 +43,19 @@ const Register = ({isPopupOpen, setErrorMessage, toggleForm, errorMessage, handl
     e.preventDefault();
     handleRegistrationSubmit(password, email, name);
     toggleForm();
-  }
+  };
   const handleLink = () => {
     setIsLoginOpen(true);
     setErrorMessage('');
     toggleForm();
-  }
+  };
 
   return (
     <div onClick={handleClose}
       className={`popup popup_login ${isPopupOpen ? '' : 'popup_hidden'}`}>
-      <form onSubmit={useFormWithValidation} className={`popup__container popup__container_login`} >
-        <button onClick={toggleForm} className={`btn-close btn-close_login`} type='button' />
-        <h2 className={`popup__title`}>Регистрация</h2>
+      <form onSubmit={useFormWithValidation} className={'popup__container popup__container_login'} >
+        <button onClick={toggleForm} className={'btn-close btn-close_login'} type='button' />
+        <h2 className={'popup__title'}>Регистрация</h2>
         <>
           <>
             <div className="input__box">
@@ -112,7 +114,7 @@ const Register = ({isPopupOpen, setErrorMessage, toggleForm, errorMessage, handl
         </span>
       </form>
     </div >
-  )
-}
+  );
+};
 
 export default React.memo(Register);

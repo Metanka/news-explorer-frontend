@@ -18,10 +18,18 @@
   border: none;
 }
 .card__trash {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
   background-image: url(../../images/trash.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 .card__image {
@@ -103,6 +111,7 @@
   border-radius: 10px;
   margin: 0;
   padding-top: 12px;
+  cursor: pointer;
 }
 
 .card__favourite:hover {
@@ -143,6 +152,10 @@
     top: 8px;
     right: 8px;
   }
+  .card__trash {
+    top: 8px;
+    right: 8px;
+  }
 
   .card__tag_position-left {
     top: 8px;
@@ -173,6 +186,10 @@
     height: 420px;
   }
   .card__favourite {
+    top: 8px;
+    right: 8px;
+  }
+  .card__trash {
     top: 8px;
     right: 8px;
   }
