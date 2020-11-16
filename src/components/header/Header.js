@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = ({
-  theme, toggleForm, setErrorMessage, handleLoginOut, name, isPopupOpen, loggedIn
+  theme, toggleForm, setErrorMessage, handleLoginOut, isPopupOpen, loggedIn
 }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const handleBurger = () => {
@@ -20,7 +20,6 @@ const Header = ({
         <Navigation
           theme={theme}
           toggleForm={toggleForm}
-          name={name}
           handleLoginOut={handleLoginOut}
           isPopupOpen={isPopupOpen}
           handleBurger={handleBurger}

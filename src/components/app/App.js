@@ -17,8 +17,6 @@ const App = () => {
   const [currentUser, setCurrentUser] = React.useState({});
   const [isRegister, setIsRegister] = React.useState(false);
   const [isLoginOpen, setIsLoginOpen] = React.useState(false);
-  const [nick, setNick] = React.useState('');
-  // const [selectedArticle, setSelectedArticle] = React.useState({});
   const [isConfirmOpen, setIsConfirmOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState('');
   const [key, setKey] = React.useState('');
@@ -28,7 +26,6 @@ const App = () => {
     if (tokenLocal) {
       getToken(tokenLocal).then((res) => {
         if (res) {
-          setNick(res.name);
           setLoggedIn(true);
           setCurrentUser(res);
         }
@@ -72,7 +69,6 @@ const App = () => {
   const handleLoginOut = () => {
     setLoggedIn(false);
     localStorage.removeItem('token');
-    setNick('');
   };
 
   const handleFlag = (keyword, title, text, date, source, link, image) => {
@@ -90,7 +86,6 @@ const App = () => {
             path='/saved-news'
             component={SavedNews}
             loggedIn={loggedIn}
-            name={nick}
             handleLoginOut={handleLoginOut}
           >
           </ProtectedRoute>
@@ -102,7 +97,6 @@ const App = () => {
               isRegister={isRegister}
               setIsRegister={setIsRegister}
               isConfirmOpen={isConfirmOpen}
-              name={nick}
               setIsConfirmOpen={setIsConfirmOpen}
               errorMessage={errorMessage}
               handleLoginOut={handleLoginOut}

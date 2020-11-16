@@ -17,7 +17,6 @@ const Main = ({
   handleRegistrationSubmit,
   handleLoginSubmit,
   loggedIn,
-  // setLoggedIn,
   setErrorMessage,
   errorMessage,
   isRegister,
@@ -27,7 +26,6 @@ const Main = ({
   setSearch,
   isLoginOpen,
   setIsLoginOpen,
-  name,
   handleFlag,
   handleLoginOut,
   setIsConfirmOpen
@@ -59,7 +57,7 @@ const Main = ({
         localStorage.setItem('search', search);
         setArticles(data.articles);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.warn(err))
       .finally(() => {
         setIsLoading(false);
       });
@@ -73,8 +71,7 @@ const Main = ({
         isPopupOpen={isLoginOpen}
         toggleForm={toggleLoginForm}
         handleLoginOut={handleLoginOut}
-        loggedIn={loggedIn}
-        name={name} />
+        loggedIn={loggedIn} />
         <Search handleSearch={handleSearch} setSearch={setSearch} />
       </div>
       {(!Array.isArray(articles)) || articles.length === 0 ? ''

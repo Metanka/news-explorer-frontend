@@ -17,7 +17,7 @@ const Results = ({
       .then(res => {
         setSavedArticles(res);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   };
 
   React.useEffect(() => {

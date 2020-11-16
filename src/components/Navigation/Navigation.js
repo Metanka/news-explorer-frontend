@@ -1,23 +1,29 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import './Navigation.css';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const Navigation = ({
   theme,
   toggleForm,
   loggedIn,
   handleLoginOut,
-  name,
   isPopupOpen,
   handleBurger,
   isMenuOpen
 }) => {
+  const { currentUser } = React.useContext(CurrentUserContext);
+  const [name, setName] = React.useState('');
   const history = useHistory();
 
   const handleCircle = () => {
     handleBurger();
     toggleForm();
   };
+
+  React.useEffect(() => {
+    setName(currentUser.name);
+  }, [currentUser]);
 
   const handleCircleOut = () => {
     handleLoginOut();
@@ -32,7 +38,8 @@ const Navigation = ({
         </div>
       }
       <nav className={isMenuOpen ? 'header__box header__box_visible' : 'header__box'}>
-        {/* NavLink во многом аналогичен Link за тем исключением, что позволяет использовать состояние ссылки */}
+        {/* NavLink во многом аналогичен Link за тем исключением,
+        что позволяет использовать состояние ссылки */}
         <NavLink to='/'
           className=
           {`header__link 

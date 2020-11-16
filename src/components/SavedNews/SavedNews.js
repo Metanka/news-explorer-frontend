@@ -5,13 +5,13 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import Results from '../results/Results';
 import Footer from '../footer/Footer';
 
-const SavedNews = ({ loggedIn, name, handleLoginOut }) => {
+const SavedNews = ({ loggedIn, handleLoginOut }) => {
   const [savedArticles, setSavedArticles] = React.useState([]);
 
   return (
     <>
-      <Header loggedIn={loggedIn} name={name} handleLoginOut={handleLoginOut} />
-      <SavedNewsHeader savedArticles={savedArticles} name={name} />
+      <Header loggedIn={loggedIn} handleLoginOut={handleLoginOut} />
+      <SavedNewsHeader savedArticles={savedArticles} />
       <Results saved={true}
       savedArticles={savedArticles}
       setSavedArticles={setSavedArticles} />

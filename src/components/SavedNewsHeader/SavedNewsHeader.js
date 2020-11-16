@@ -1,10 +1,13 @@
 import React from 'react';
 import './SavedNewsHeader.css';
 import { api } from '../../utils/Api';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-const SavedNewsHeader = ({ name }) => {
+const SavedNewsHeader = () => {
   const [number, setNumber] = React.useState();
+  const { currentUser } = React.useContext(CurrentUserContext);
   const [uniqueNames, setUniqueNames] = React.useState([]);
+  const [name, setName] = React.useState('');
 
   const getNumberArticles = () => {
     api.getAllArticles()
@@ -20,7 +23,8 @@ const SavedNewsHeader = ({ name }) => {
 
   React.useEffect(() => {
     getNumberArticles();
-  }, []);
+    setName(currentUser.name);
+  }, [currentUser]);
 
   function declOfNum(num, titles) {
     const cases = [2, 0, 1, 1, 1, 2];
