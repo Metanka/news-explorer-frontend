@@ -2,11 +2,11 @@ import React from 'react';
 import './Search.css';
 import { useFormWithValidation } from '../../utils/validationForm';
 
-const Search = ({ handleSearch, setSearch }) => {
+const Search = ({ handleSearch, setKey }) => {
   const validate = useFormWithValidation();
 
   const handleSearchInput = (e) => {
-    setSearch(e.target.value);
+    setKey(e.target.value);
     validate.handleChange(e);
   };
   const handleSubmit = (e) => {
@@ -27,6 +27,7 @@ const Search = ({ handleSearch, setSearch }) => {
           placeholder='Политика'
           id='key'
           name='key'
+          type='text'
         />
         <span className='search__error'>{validate.errors.key}</span>
         <button onClick={handleSubmit} disabled={!validate.isValid} className='search__button'>Искать</button>

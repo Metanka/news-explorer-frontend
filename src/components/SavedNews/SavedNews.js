@@ -5,8 +5,8 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import Results from '../results/Results';
 import Footer from '../footer/Footer';
 
-const SavedNews = ({ loggedIn, handleLoginOut }) => {
-  const [savedArticles, setSavedArticles] = React.useState([]);
+const SavedNews = ({ loggedIn, handleLoginOut, savedArticles, setSavedArticles }) => {
+  
 
   return (
     <>

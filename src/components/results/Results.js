@@ -5,7 +5,7 @@ import { myData } from '../../utils/Date';
 import { api } from '../../utils/Api';
 
 const Results = ({
-  main, saved, articles, search, savedArticles, setSavedArticles, loggedIn
+  main, saved, articles, keyword, savedArticles, setSavedArticles, loggedIn, toggleLoginForm
 }) => {
   const [numbersArticle, setNumbersArticle] = React.useState(3);
   // при нажатии добавляет +3 строки массива
@@ -14,11 +14,13 @@ const Results = ({
   };
 
   const getSavedArticles = () => {
-    api.getAllArticles()
-      .then(res => {
-        setSavedArticles(res);
-      })
-      .catch(err => console.error(err));
+    if (loggedIn) {
+      api.getAllArticles()
+        .then(res => {
+          setSavedArticles(res);
+        })
+        .catch(err => console.error(err));
+    }
   };
 
   React.useEffect(() => {
@@ -65,19 +67,21 @@ const Results = ({
                     title={item.title}
                     text={item.description}
                     source={item.source.name}
+                    toggleLoginForm={toggleLoginForm}
                     loggedIn={loggedIn}
                     image={item.urlToImage}
                     key={Math.random() * 10000000}
                     item={item}
                     date={myData.toAtticle(item.publishedAt.substring(0, 10))}
                     link={item.url}
-                    keyword={search}
+                    keyword={keyword}
                   />);
                 }) : articles.slice(0, numbersArticle).map(item => {
                   return (<NewsCard
                     title={item.title}
                     text={item.description}
                     author={item.source.name}
+                    toggleLoginForm={toggleLoginForm}
                     loggedIn={loggedIn}
                     image={item.urlToImage}
                     key={Math.random() * 10000000}

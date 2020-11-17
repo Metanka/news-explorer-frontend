@@ -66,8 +66,6 @@ const Login = ({
                 <span className='input__type'>Email</span>
                 <input
                   onChange={handleEmailChange}
-                  id='email'
-                  name='email'
                   type='email'
                   placeholder='Введите почту'
                   required
@@ -79,8 +77,6 @@ const Login = ({
                 <span className='input__type'>Пароль</span>
                 <input
                   onChange={handlePasswordChange}
-                  id='password'
-                  name='password'
                   type='password'
                   placeholder='Введите пароль'
                   required

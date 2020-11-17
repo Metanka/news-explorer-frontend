@@ -12,6 +12,7 @@ import Register from '../Register/Register';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../notFound/notFound';
 import { newsApi } from '../../utils/NewsApi';
+import { useLocation } from 'react-router-dom';
 
 const Main = ({
   handleRegistrationSubmit,
@@ -19,16 +20,19 @@ const Main = ({
   loggedIn,
   setErrorMessage,
   errorMessage,
+  setSavedArticles,
+  savedArticles,
   isRegister,
   setIsRegister,
   isConfirmOpen,
-  search,
-  setSearch,
+  keyWord,
+  setKeyWord,
   isLoginOpen,
   setIsLoginOpen,
   handleLoginOut,
   setIsConfirmOpen
 }) => {
+  const { search: needLogin } = useLocation();
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   // переключатели попапов
@@ -45,15 +49,21 @@ const Main = ({
   };
 
   React.useEffect(() => {
+    if (needLogin.includes('need')) {
+      setIsLoginOpen(true);
+    }
+  }, [needLogin]);
+
+  React.useEffect(() => {
     setArticles(JSON.parse(localStorage.getItem('articles')));
   }, []);
 
   const handleSearch = () => {
     setIsLoading(true);
-    newsApi.getAllArticles(search)
+    newsApi.getAllArticles(keyWord)
       .then((data) => {
         localStorage.setItem('articles', JSON.stringify(data.articles));
-        localStorage.setItem('search', search);
+        localStorage.setItem('search', keyWord);
         setArticles(data.articles);
       })
       .catch(err => console.warn(err))
@@ -71,16 +81,19 @@ const Main = ({
           toggleForm={toggleLoginForm}
           handleLoginOut={handleLoginOut}
           loggedIn={loggedIn} />
-        <Search handleSearch={handleSearch} setSearch={setSearch} />
+        <Search handleSearch={handleSearch} setKey={setKeyWord} />
       </div>
       {
-        search === null ? '' : <>
+        keyWord === null ? '' : <>
           {(!Array.isArray(articles)) || articles.length === 0 ? ''
             : <Results main={true}
               loggedIn={loggedIn}
               articles={articles}
               setArticles={setArticles}
-              search={search} />
+              savedArticles={savedArticles}
+              setSavedArticles={setSavedArticles}
+              toggleLoginForm={toggleLoginForm}
+              keyword={keyWord} />
           }
           {isLoading ? <Preloader /> : ''}
           {Array.isArray(articles) ? articles.length === 0 ? <NotFound /> : '' : ''}

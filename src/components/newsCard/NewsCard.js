@@ -1,10 +1,10 @@
 import React from 'react';
 import './NewsCard.css';
-import { api } from '../../utils/Api';
+import {api} from '../../utils/Api';
 
 const NewsCard = ({
-  isSaved, tag, id, title, text, source, image, date, link,
-  keyword, setSavedArticles, loggedIn
+  isSaved, tag, id, title, text, source, image, date, link, setSavedArticles, 
+  loggedIn, keyword, toggleLoginForm
 }) => {
   const [isDelete, setIsDelete] = React.useState(false);
   const [isFavourite, setIsFavourite] = React.useState(false);
@@ -24,10 +24,15 @@ const NewsCard = ({
       .catch(err => console.warn(err));
   };
   const handleFavourite = () => {
-    api.saveArticle(keyword, title, text, date, source, link, image)
-      .then(() => setIsFavourite(!isFavourite))
-      .catch(err => console.warn(err));
+    if (loggedIn) {
+      api.saveArticle(keyword, title, text, date, source, link, image)
+        .then(() => setIsFavourite(!isFavourite))
+        .catch(err => console.warn(err));
+    } else {
+      toggleLoginForm();
+    }
   };
+
 
   return (
     <div className="card">
@@ -38,7 +43,7 @@ const NewsCard = ({
       }
 
       <span onClick={handleDelete} className={`card__tag card__tag_position-right ${isDelete ? 'card__tag_visible' : ''}`}>Убрать из сохраненных</span>
-      <button disabled={!loggedIn}
+      <button
         onClick={isSaved ? handleTrash : handleFavourite}
         className={tag
           ? 'card__trash'

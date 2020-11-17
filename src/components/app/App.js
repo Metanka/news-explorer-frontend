@@ -12,13 +12,14 @@ import { register, getToken, auth } from '../../utils/auth';
 const token = localStorage.getItem('token');
 
 const App = () => {
+  const [savedArticles, setSavedArticles] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(!!token);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isRegister, setIsRegister] = React.useState(false);
   const [isLoginOpen, setIsLoginOpen] = React.useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState('');
-  const [key, setKey] = React.useState('');
+  const [keyWord, setKeyWord] = React.useState('');
 
   const tokenCheck = () => {
     const tokenLocal = localStorage.getItem('token');
@@ -36,7 +37,7 @@ const App = () => {
 
   React.useEffect(() => {
     tokenCheck();
-    setKey(localStorage.getItem('search'));
+    setKeyWord(localStorage.getItem('search'));
   }, [loggedIn]);
 
   const handleRegistrationSubmit = (password, email, name) => {
@@ -81,6 +82,8 @@ const App = () => {
             path='/saved-news'
             component={SavedNews}
             loggedIn={loggedIn}
+            savedArticles={savedArticles}
+            setSavedArticles={setSavedArticles}
             handleLoginOut={handleLoginOut}
           >
           </ProtectedRoute>
@@ -93,12 +96,14 @@ const App = () => {
               setIsRegister={setIsRegister}
               isConfirmOpen={isConfirmOpen}
               setIsConfirmOpen={setIsConfirmOpen}
+              setSavedArticles={setSavedArticles}
+              savedArticles={savedArticles}
               errorMessage={errorMessage}
               handleLoginOut={handleLoginOut}
               setErrorMessage={setErrorMessage}
               handleLoginSubmit={handleLoginSubmit}
-              search={key}
-              setSearch={setKey}
+              keyWord={keyWord}
+              setKeyWord={setKeyWord}
               isLoginOpen={isLoginOpen}
               setIsLoginOpen={setIsLoginOpen}
               />
