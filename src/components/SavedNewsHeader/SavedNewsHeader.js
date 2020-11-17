@@ -35,9 +35,9 @@ const SavedNewsHeader = () => {
   return (
     <div className='news'>
       <p className='news__about'>Сохраненные статьи</p>
-      <h1 className='news__title'>{`${name}, у вас ${number} ${savedText}`}</h1>
+      <h1 className='news__title'>{`${name}, у вас ${number || 0} ${savedText}`}</h1>
       <span className='news__keys'>По ключевым словам: <span className='tag'>
-        {uniqueNames.length === 0 ? '' : `${uniqueNames[0]}, ${uniqueNames[1] ? uniqueNames[1] : ''} и ${uniqueNames.length - 2 || 0} другим.`}
+        {uniqueNames.length === 0 ? '' : `${uniqueNames[0]}, ${uniqueNames[1] ? uniqueNames[1] : ''} и ${(uniqueNames.length - 2) > 0 ? (uniqueNames.length - 2) : 0} другим.`}
       </span>
       </span>
     </div>

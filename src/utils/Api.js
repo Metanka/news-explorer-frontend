@@ -7,7 +7,7 @@ class Api {
   // eslint-disable-next-line class-methods-use-this
   _getResponseData(res) {
     if (res.ok) {
-      return res.json();
+      return res.json().catch(() => res);
     }
     // eslint-disable-next-line prefer-promise-reject-errors
     return Promise.reject(`Ошибка: ${res.status}`);

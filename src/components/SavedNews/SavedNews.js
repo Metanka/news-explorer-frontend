@@ -13,6 +13,7 @@ const SavedNews = ({ loggedIn, handleLoginOut }) => {
       <Header loggedIn={loggedIn} handleLoginOut={handleLoginOut} />
       <SavedNewsHeader savedArticles={savedArticles} />
       <Results saved={true}
+      loggedIn={loggedIn}
       savedArticles={savedArticles}
       setSavedArticles={setSavedArticles} />
       <Footer />

@@ -8,7 +8,6 @@ import SavedNews from '../SavedNews/SavedNews';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { register, getToken, auth } from '../../utils/auth';
-import { api } from '../../utils/Api';
 
 const token = localStorage.getItem('token');
 
@@ -68,12 +67,8 @@ const App = () => {
 
   const handleLoginOut = () => {
     setLoggedIn(false);
+    setCurrentUser({});
     localStorage.removeItem('token');
-  };
-
-  const handleFlag = (keyword, title, text, date, source, link, image) => {
-    api.saveArticle(keyword, title, text, date, source, link, image)
-      .catch(err => console.warn(err));
   };
 
   return (
@@ -104,7 +99,6 @@ const App = () => {
               handleLoginSubmit={handleLoginSubmit}
               search={key}
               setSearch={setKey}
-              handleFlag={handleFlag}
               isLoginOpen={isLoginOpen}
               setIsLoginOpen={setIsLoginOpen}
               />

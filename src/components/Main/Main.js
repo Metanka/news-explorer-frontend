@@ -26,7 +26,6 @@ const Main = ({
   setSearch,
   isLoginOpen,
   setIsLoginOpen,
-  handleFlag,
   handleLoginOut,
   setIsConfirmOpen
 }) => {
@@ -67,22 +66,27 @@ const Main = ({
     <>
       <div className='main__background'>
         <Header
-        theme={true}
-        isPopupOpen={isLoginOpen}
-        toggleForm={toggleLoginForm}
-        handleLoginOut={handleLoginOut}
-        loggedIn={loggedIn} />
+          theme={true}
+          isPopupOpen={isLoginOpen}
+          toggleForm={toggleLoginForm}
+          handleLoginOut={handleLoginOut}
+          loggedIn={loggedIn} />
         <Search handleSearch={handleSearch} setSearch={setSearch} />
       </div>
-      {(!Array.isArray(articles)) || articles.length === 0 ? ''
-        : <Results main={true}
-          handleFlag={handleFlag}
-          articles={articles}
-          setArticles={setArticles}
-          search={search} />
+      {
+        search === null ? '' : <>
+          {(!Array.isArray(articles)) || articles.length === 0 ? ''
+            : <Results main={true}
+              loggedIn={loggedIn}
+              articles={articles}
+              setArticles={setArticles}
+              search={search} />
+          }
+          {isLoading ? <Preloader /> : ''}
+          {Array.isArray(articles) ? articles.length === 0 ? <NotFound /> : '' : ''}
+
+        </>
       }
-      {isLoading ? <Preloader /> : ''}
-      {Array.isArray(articles) ? articles.length === 0 ? <NotFound /> : '' : ''}
       <About />
       <Footer />
       <Login

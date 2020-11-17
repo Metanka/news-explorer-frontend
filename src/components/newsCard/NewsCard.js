@@ -3,7 +3,8 @@ import './NewsCard.css';
 import { api } from '../../utils/Api';
 
 const NewsCard = ({
-  isSaved, tag, id, title, text, source, image, date, link, handleFlag, keyword, setSavedArticles
+  isSaved, tag, id, title, text, source, image, date, link,
+  keyword, setSavedArticles, loggedIn
 }) => {
   const [isDelete, setIsDelete] = React.useState(false);
   const [isFavourite, setIsFavourite] = React.useState(false);
@@ -13,14 +14,19 @@ const NewsCard = ({
   };
   const handleDelete = () => {
     api.deleteArticle(id)
-      .catch(err => console.error(err));
-    api.getAllArticles()
-      .then(data => setSavedArticles(data))
-      .catch(err => console.error(err));
+      .then(() => {
+        api.getAllArticles()
+          .then(data => {
+            setSavedArticles(data);
+          })
+          .catch(err => console.error(err));
+      })
+      .catch(err => console.warn(err));
   };
   const handleFavourite = () => {
-    setIsFavourite(!isFavourite);
-    handleFlag(keyword, title, text, date, source, link, image);
+    api.saveArticle(keyword, title, text, date, source, link, image)
+      .then(() => setIsFavourite(!isFavourite))
+      .catch(err => console.warn(err));
   };
 
   return (
@@ -32,7 +38,8 @@ const NewsCard = ({
       }
 
       <span onClick={handleDelete} className={`card__tag card__tag_position-right ${isDelete ? 'card__tag_visible' : ''}`}>Убрать из сохраненных</span>
-      <button onClick={isSaved ? handleTrash : handleFavourite}
+      <button disabled={!loggedIn}
+        onClick={isSaved ? handleTrash : handleFavourite}
         className={tag
           ? 'card__trash'
           : `card__favourite ${isFavourite ? 'card__favourite_active' : ''}`

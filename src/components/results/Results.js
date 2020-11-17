@@ -3,8 +3,9 @@ import './Results.css';
 import NewsCard from '../newsCard/NewsCard';
 import { myData } from '../../utils/Date';
 import { api } from '../../utils/Api';
+
 const Results = ({
-  main, saved, articles, handleFlag, search, savedArticles, setSavedArticles
+  main, saved, articles, search, savedArticles, setSavedArticles, loggedIn
 }) => {
   const [numbersArticle, setNumbersArticle] = React.useState(3);
   // при нажатии добавляет +3 строки массива
@@ -45,9 +46,12 @@ const Results = ({
                   id={item._id}
                   date={item.date}
                   link={item.url}
+                  loggedIn={loggedIn}
                   isSaved={true}
-                  tag={item.keyword}
+                  savedArticles={savedArticles}
                   setSavedArticles={setSavedArticles}
+                  tag={item.keyword}
+                  getSavedArticles={getSavedArticles}
                 />);
               })
             }
@@ -61,12 +65,12 @@ const Results = ({
                     title={item.title}
                     text={item.description}
                     source={item.source.name}
+                    loggedIn={loggedIn}
                     image={item.urlToImage}
                     key={Math.random() * 10000000}
                     item={item}
                     date={myData.toAtticle(item.publishedAt.substring(0, 10))}
                     link={item.url}
-                    handleFlag={handleFlag}
                     keyword={search}
                   />);
                 }) : articles.slice(0, numbersArticle).map(item => {
@@ -74,6 +78,7 @@ const Results = ({
                     title={item.title}
                     text={item.description}
                     author={item.source.name}
+                    loggedIn={loggedIn}
                     image={item.urlToImage}
                     key={Math.random() * 10000000}
                     item={item}

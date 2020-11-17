@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import './PopupWithForm.css';
 
 const PopupWithForm = ({ isPopupOpen, toggleForm, setIsLoginOpen }) => {
