@@ -1,12 +1,10 @@
 import React from 'react';
 import './Footer.css';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import github from '../../images/github.svg';
 import fb from '../../images/fb.svg';
 
-
 const Footer = () => {
-
   return (
     <div className='footer'>
       <p className='footer__censure'>© 2020 Supersite, Powered by News API</p>
@@ -38,6 +36,6 @@ const Footer = () => {
       </div>
     </div>
   );
-}
+};
 
 export default React.memo(Footer);

@@ -7,7 +7,7 @@ const Circle = () => {
       <span className='circle__loader' />
       <span className='circle__text'>Идет поиск новотей...</span>
     </div>
-  )
-}
+  );
+};
 
 export default React.memo(Circle);

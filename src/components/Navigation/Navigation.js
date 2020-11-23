@@ -1,49 +1,76 @@
 import React from 'react';
-import {NavLink, useHistory} from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './Navigation.css';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-const Navigation = ({theme, toggleForm, isSaved, name, isPopupOpen, handleBurger, isMenuOpen}) => {
+const Navigation = ({
+  theme,
+  toggleForm,
+  loggedIn,
+  handleLoginOut,
+  isPopupOpen,
+  handleBurger,
+  isMenuOpen
+}) => {
+  const { currentUser } = React.useContext(CurrentUserContext);
+  const [name, setName] = React.useState('');
   const history = useHistory();
-  
+
   const handleCircle = () => {
     handleBurger();
     toggleForm();
-  }
+  };
+
+  React.useEffect(() => {
+    setName(currentUser.name);
+  }, [currentUser]);
 
   const handleCircleOut = () => {
+    handleLoginOut();
     history.push('/');
-  }
+  };
   return (
     <>
-      {isPopupOpen ? '' :
-        <div onClick={handleBurger} className={`header__button-group ${isMenuOpen ? 'change' : ''}`}>
+      {isPopupOpen ? ''
+        : <div onClick={handleBurger} className={`header__button-group ${isMenuOpen ? 'change' : ''}`}>
           <span className={`header__button-line ${theme ? '' : 'header__button-line_black'} ${isMenuOpen ? 'header__button-line_esc header__button-line_white' : ''}`}></span>
           <span className={`header__button-line ${theme ? '' : 'header__button-line_black'} ${isMenuOpen ? 'header__button-line_esc header__button-line_white' : ''}`}></span>
         </div>
       }
       <nav className={isMenuOpen ? 'header__box header__box_visible' : 'header__box'}>
-        {/* NavLink во многом аналогичен Link за тем исключением, что позволяет использовать состояние ссылки */}
-        <NavLink to='/' className={`header__link ${theme ? 'header_light-theme header__link_active header__link_active_light-theme' : ''}
-    ${isMenuOpen ? 'header_light-theme' : ''}`}>Главная</NavLink>
-        {isSaved ?
-          <NavLink to='/saved-news' className={`header__link ${isMenuOpen ? 'header_light-theme' : 'header__link_active'}`}>Сохраненные статьи</NavLink> : ''
+        {/* NavLink во многом аналогичен Link за тем исключением,
+        что позволяет использовать состояние ссылки */}
+        <NavLink to='/'
+          className=
+          {`header__link 
+          ${theme
+            ? 'header_light-theme header__link_active header__link_active_light-theme' : ''}
+          ${isMenuOpen
+              ? 'header_light-theme' : ''}`
+          }>Главная</NavLink>
+        {loggedIn
+          ? <NavLink to='/saved-news'
+            className={`header__link 
+            ${theme ? 'header_light-theme' : 'header__link_active'} 
+            ${isMenuOpen ? 'header_light-theme' : ''}`
+            }>Сохраненные статьи</NavLink> : ''
         }
         <span
-          onClick={isSaved ? handleCircleOut : handleCircle}
+          onClick={loggedIn ? handleCircleOut : handleCircle}
           className={`header__circle ${theme ? 'header_light-theme' : 'header__circle_dark'} 
     ${isMenuOpen ? 'header__circle_light' : ''} `}
         >
           <span className={`header__circle-link ${(isMenuOpen || theme) ? 'header_light-theme' : ''}`} >
-            {name ? name : 'Авторизоваться'}
+            {name || 'Авторизоваться'}
           </span>
           {
-            name ?
-              <span className='header__logout' /> : ''
+            name
+              ? <span className={`header__logout ${theme ? 'header__logout_white' : ''} `} /> : ''
           }
         </span>
       </nav>
     </>
   );
-}
+};
 
 export default React.memo(Navigation);

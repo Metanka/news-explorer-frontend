@@ -5,16 +5,20 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import Results from '../results/Results';
 import Footer from '../footer/Footer';
 
+const SavedNews = ({ loggedIn, handleLoginOut, savedArticles, setSavedArticles }) => {
+  
 
-const SavedNews = () => {
   return (
     <>
-      <Header isSaved={true} name='Алина' />
-      <SavedNewsHeader />
-      <Results saved={true} />
+      <Header loggedIn={loggedIn} handleLoginOut={handleLoginOut} />
+      <SavedNewsHeader savedArticles={savedArticles} />
+      <Results saved={true}
+      loggedIn={loggedIn}
+      savedArticles={savedArticles}
+      setSavedArticles={setSavedArticles} />
       <Footer />
     </>
-  )
-}
+  );
+};
 
 export default React.memo(SavedNews);

@@ -17,6 +17,10 @@
   font-size: 20px;
   line-height: 24px;
   cursor: pointer;
+  color: black;
+}
+.header__title-link {
+  text-decoration: none;
 }
 
 .header__box {
@@ -97,6 +101,10 @@
   margin-left: 23px;
 }
 
+.header__logout_white {
+  background-image: url(../../images/Unionwhite.svg);
+}
+
 @media screen and (max-width: 1410px) {
   .header__container {
     max-width: calc(768px - 80px);
@@ -152,7 +160,7 @@
 
   .header__link_active {
     border: none;
-    align-self: center;
+    
   }
   .header__button-line {
     height: 3px;
@@ -193,6 +201,7 @@
     font-size: 18px;
     line-height: 56px;
     margin-left: 18px;
+    align-self: center;
   }
   .header__link:last-of-type {
     font-size: 18px;

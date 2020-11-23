@@ -46,6 +46,17 @@
   line-height: 22px;
   padding-left: 16px;
 }
+.search__error {
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  position: absolute;
+  line-height: 18px;
+  color: red;
+  top: 5px;
+  right: 170px;
+}
 
 .search__button {
   width: 168px;
